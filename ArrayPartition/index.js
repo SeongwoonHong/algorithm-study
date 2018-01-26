@@ -15,9 +15,12 @@ All the integers in the array will be in the range of [-10000, 10000].
  * @param {number[]} nums
  * @return {number}
  */
+
 var arrayPairSum = function(nums) {
-  return nums.sort().reduce((acc, num, i) => {
-    if (i % 2 === 0) return acc + num
-    else return acc;
-  }, 0);
+  let result = 0;
+  nums.sort((a, b) => a - b);
+  while (nums.length) {
+    result += nums.splice(0, 2)[0];
+  }
+  return result;
 }
