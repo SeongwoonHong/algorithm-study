@@ -18,16 +18,14 @@ You may assume the input string will only contain letters of alphabet.
  * @return {string[]}
  */
 var findWords = function(words) {
-  let firstRowRegex = /[qwertyuiop]/g;
-  let secondRowRegex = /[asdfghjkl]/g;
-  let thirdRowRegex = /[zxcvbnm]/g;
-  return words.filter((word, i) => {
-    word = word.toLowerCase();
-    debugger;
+  let firstRowRegex = /^[qwertyuiop]*$/i;
+  let secondRowRegex = /^[asdfghjkl]*$/i;
+  let thirdRowRegex = /^[zxcvbnm]*$/i;
+  let result = [];
+  words.forEach((word, i) => {
     if (firstRowRegex.test(word) || secondRowRegex.test(word) || thirdRowRegex.test(word)) {
-      return word;
+      result.push(word);
     }
   })
+  return result
 };
-
-findWords(["Hello","Alaska","Dad","Peace"]);
