@@ -34,7 +34,6 @@ var distributeCandies = function(candies) {
     }
   });
   return size;
-  
 };
 
 module.exports = distributeCandies;
