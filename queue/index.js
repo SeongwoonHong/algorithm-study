@@ -11,14 +11,17 @@
 class Queue {
   constructor() {
     this.data = [];
+    this.count = 0;
   }
-
   add(record) {
-    this.data.unshift(record);
+    this.data = [record, ...this.data]
+    this.count++;
   }
-
   remove() {
-    return this.data.pop();
+    const popped = this.data[this.count - 1];
+    delete this.data[this.count - 1];
+    this.count--;
+    return popped;
   }
 }
 
