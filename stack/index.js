@@ -10,21 +10,40 @@
 //   s.pop(); // returns 2
 //   s.pop(); // returns 1
 
+// class Stack {
+//   constructor() {
+//     this.data = [];
+//   }
+//
+//   push(record) {
+//     this.data.unshift(record);
+//   }
+//
+//   pop() {
+//     return this.data.shift();
+//   }
+//
+//   peek() {
+//     return this.data[0];
+//   }
+// }
 class Stack {
   constructor() {
     this.data = [];
+    this.count = 0;
   }
-
   push(record) {
-    this.data.unshift(record);
+    this.data[this.count] = record;
+    this.count++;
   }
-
   pop() {
-    return this.data.shift();
+    const popped = this.data[this.count - 1];
+    delete this.data[this.count - 1];
+    this.count--;
+    return popped;
   }
-
   peek() {
-    return this.data[0];
+    return this.data[this.count - 1];
   }
 }
 
