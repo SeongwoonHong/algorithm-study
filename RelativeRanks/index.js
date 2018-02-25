@@ -15,23 +15,34 @@ All the scores of athletes are guaranteed to be unique.
  * @param {number[]} nums
  * @return {string[]}
  */
-var findRelativeRanks = function(nums) {
-  let hash = {};
-  let copied = JSON.parse(JSON.stringify(nums));
-  nums.sort((a, b) => b - a);
-  nums.forEach((num, i) => {
-    if (i === 0) {
-      hash[num] = 'Gold Medal';
-    }
-    else if (i === 1) {
-      hash[num] = 'Silver Medal';
-    }
-    else if (i === 2){
-      hash[num] = 'Bronze Medal';
-    } else {
-      hash[num] = (i+1).toString();
-    }
-  });
-  return copied.map((num, i) => hash[num]);
+// var findRelativeRanks = function(nums) {
+//   let hash = {};
+//   let copied = JSON.parse(JSON.stringify(nums));
+//   nums.sort((a, b) => b - a);
+//   nums.forEach((num, i) => {
+//     if (i === 0) {
+//       hash[num] = 'Gold Medal';
+//     }
+//     else if (i === 1) {
+//       hash[num] = 'Silver Medal';
+//     }
+//     else if (i === 2){
+//       hash[num] = 'Bronze Medal';
+//     } else {
+//       hash[num] = (i+1).toString();
+//     }
+//   });
+//   return copied.map((num, i) => hash[num]);
   
+// };
+var findRelativeRanks = function(nums) {
+  const sorted = [...nums].sort((a, b) => b - a);
+  const medals = ['Gold Medal', 'Silver Medal', 'Bronze Medal'];
+  
+  const preRanks = sorted.reduce((ranks, score, i) => {
+      ranks[score] = medals[i] || `${i + 1}`;
+      return ranks;
+  }, {});
+  
+  return nums.map((num) => preRanks[num]);
 };
