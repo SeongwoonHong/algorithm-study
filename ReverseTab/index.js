@@ -23,4 +23,4 @@ function reverse(str) {
     result = str[i] + result;
   }
   return result;
-}
+}  
