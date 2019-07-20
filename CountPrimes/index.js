@@ -12,7 +12,7 @@ Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
  * @param {number} n
  * @return {number}
  */
-var countPrimes = function(n) {
+const countPrimes = function(n) {
   let arr = [];
   let count = 0;
 
@@ -32,3 +32,5 @@ var countPrimes = function(n) {
 
   return count;
 };
+
+module.exports = countPrimes;
